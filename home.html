@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="theme-color" content="#090024">
+	<title>★ Homepage Rafael ★</title>
+	<style>
+		:root {
+			color-scheme: dark;
+			--ink: #fff7d6;
+			--night: #090024;
+			--panel: #180a46;
+			--pink: #ff52ca;
+			--cyan: #62fff1;
+			--yellow: #fff36b;
+			--line: #a183ff;
+		}
+
+		* { box-sizing: border-box; }
+
+		body {
+			margin: 0;
+			padding: 22px 14px 40px;
+			color: var(--ink);
+			font-family: "Courier New", monospace;
+			background-color: var(--night);
+			background-image: radial-gradient(#382477 1px, transparent 1px), radial-gradient(#241453 1px, transparent 1px);
+			background-position: 0 0, 12px 12px;
+			background-size: 24px 24px;
+		}
+
+		a { color: var(--cyan); }
+		a:hover, a:focus-visible { color: var(--yellow); }
+
+		.page { width: min(900px, 100%); margin: 0 auto; }
+
+		.masthead {
+			position: relative;
+			overflow: hidden;
+			padding: 26px 18px 22px;
+			border: 3px ridge var(--pink);
+			text-align: center;
+			background: linear-gradient(135deg, #260057, #080020 62%, #10235b);
+			box-shadow: 0 0 18px #ed40c966;
+		}
+
+		.masthead::after {
+			position: absolute;
+			right: -20px;
+			bottom: -48px;
+			width: 180px;
+			height: 100px;
+			border: 2px solid #ff52ca88;
+			border-radius: 50%;
+			content: "";
+			transform: rotate(-18deg);
+			box-shadow: 0 0 0 10px #62fff122, 0 0 0 22px #ff52ca1c;
+			pointer-events: none;
+		}
+
+		.eyebrow { margin: 0 0 8px; color: var(--cyan); font-size: 12px; }
+
+		h1 {
+			margin: 0;
+			color: var(--yellow);
+			font-size: clamp(28px, 7vw, 50px);
+			text-shadow: 3px 3px 0 #f329bd, 0 0 14px #ff52ca;
+		}
+
+		.masthead p { margin: 12px 0 0; }
+
+		.marquee {
+			overflow: hidden;
+			margin: 12px 0;
+			padding: 7px 0;
+			border-block: 1px dashed var(--cyan);
+			color: var(--yellow);
+			white-space: nowrap;
+		}
+
+		.marquee span { display: inline-block; animation: scroll 19s linear infinite; }
+		@keyframes scroll { to { transform: translateX(-50%); } }
+
+		.nav {
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: center;
+			gap: 8px;
+			margin: 12px 0;
+		}
+
+		.nav a, .retro-button {
+			display: inline-block;
+			padding: 7px 11px;
+			border: 3px outset #b7a9ff;
+			color: #170632;
+			font-weight: bold;
+			text-decoration: none;
+			background: var(--cyan);
+		}
+
+		.nav a:hover, .retro-button:hover { color: #170632; background: var(--yellow); }
+		.columns { display: grid; grid-template-columns: 210px minmax(0, 1fr); gap: 12px; align-items: start; }
+
+		.box {
+			margin-bottom: 12px;
+			border: 3px ridge var(--line);
+			background: var(--panel);
+			box-shadow: 4px 4px 0 #050014;
+		}
+
+		.box h2 {
+			margin: 0;
+			padding: 7px 9px;
+			border-bottom: 2px groove var(--line);
+			color: #15062e;
+			font-size: 16px;
+			background: var(--pink);
+		}
+
+		.box-content { padding: 12px; line-height: 1.6; }
+		.box-content p:first-child { margin-top: 0; }
+		.box-content p:last-child { margin-bottom: 0; }
+		.sidebar ul { margin: 0; padding-left: 20px; }
+		.sidebar li { margin: 5px 0; }
+
+		.badge {
+			display: block;
+			width: 100%;
+			margin-top: 10px;
+			padding: 8px 4px;
+			border: 2px outset #c5bbff;
+			color: var(--yellow);
+			text-align: center;
+			font-size: 11px;
+			background: repeating-linear-gradient(135deg, #25105a 0 6px, #35105a 6px 12px);
+		}
+
+		.welcome { color: var(--cyan); }
+		.updates { padding-left: 20px; }
+		.updates li { margin: 8px 0; }
+		.pixel-rule { height: 4px; margin: 15px 0; border: 0; background: repeating-linear-gradient(90deg, var(--pink) 0 8px, var(--yellow) 8px 16px, var(--cyan) 16px 24px); }
+		.guestbook-form { display: grid; gap: 8px; }
+		.guestbook-form label { display: grid; gap: 4px; }
+		input, textarea { width: 100%; padding: 7px; border: 2px inset #b7a9ff; border-radius: 0; color: var(--ink); font: inherit; background: #090024; }
+		textarea { min-height: 74px; resize: vertical; }
+		.retro-button { width: fit-content; cursor: pointer; font: bold 13px "Courier New", monospace; }
+		#guestbook-entries { margin-top: 12px; }
+		.entry { margin-top: 8px; padding: 8px; border: 1px dashed var(--cyan); overflow-wrap: anywhere; }
+		.entry strong { color: var(--yellow); }
+
+		footer { padding: 12px 8px; color: #d6cfff; text-align: center; font-size: 12px; }
+		.counter { color: var(--yellow); letter-spacing: 2px; }
+		.blink { animation: blink 1s steps(2, start) infinite; color: var(--pink); }
+		@keyframes blink { to { visibility: hidden; } }
+
+		@media (max-width: 620px) {
+			body { padding: 12px 10px 28px; }
+			.columns { grid-template-columns: 1fr; }
+			.sidebar { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 10px; }
+			.sidebar .box { margin: 0; }
+			.masthead { padding-inline: 10px; }
+		}
+
+		@media (prefers-reduced-motion: reduce) {
+			*, *::before, *::after { scroll-behavior: auto !important; animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; }
+		}
+	</style>
+</head>
+<body>
+	<div class="page">
+		<header class="masthead">
+			<p class="eyebrow">~*~ ruang kecilku di dunia maya ~*~</p>
+			<h1>★ HOMEPAGE PRIBADI ★</h1>
+			<p>Halo, pengelana web! Mampir dulu, ya :)</p>
+		</header>
+
+		<div class="marquee" aria-label="Pengumuman">
+			<span>✦ SELAMAT DATANG DI HOMEPAGE-KU ✦ Jangan lupa tanda tangan di guestbook! ✦ Update terakhir: hari ini ✦ SELAMAT DATANG DI HOMEPAGE-KU ✦ Jangan lupa tanda tangan di guestbook! ✦ Update terakhir: hari ini ✦</span>
+		</div>
+
+		<nav class="nav" aria-label="Navigasi utama">
+			<a href="#home">⌂ Home</a>
+			<a href="#tentang">☺ Tentang</a>
+			<a href="#update">✎ Update</a>
+			<a href="#guestbook">✉ Guestbook</a>
+		</nav>
+
+		<div class="columns">
+			<aside class="sidebar" aria-label="Info samping">
+				<section class="box">
+					<h2>~ Link Favorit ~</h2>
+					<div class="box-content">
+						<ul>
+							<li><a href="#update">Catatan harian</a></li>
+							<li><a href="#guestbook">Buku tamu</a></li>
+							<li><a href="#tentang">Profil webmaster</a></li>
+							<li><a href="#home">Balik ke atas</a></li>
+						</ul>
+						<div class="badge">BEST VIEWED AT<br>800 × 600 PIXELS<br>★ NETSCAPE VIBES ★</div>
+					</div>
+				</section>
+
+				<section class="box">
+					<h2>~ Status ~</h2>
+					<div class="box-content">
+						<p>♪ Lagi diputar:<br><strong>lagu favoritku.mid</strong></p>
+						<p>☻ Pengunjung ke-<br><strong class="counter" id="visitor-count">000001</strong></p>
+						<span class="blink">● ONLINE</span>
+					</div>
+				</section>
+
+				<section class="box">
+					<h2>~ Webring ~</h2>
+					<div class="box-content">
+						<p>Bagian dari <strong>Personal Pages Ring</strong></p>
+						<p><a href="#home">&lt;&lt; Sebelumnya</a><br><a href="#home">Berikutnya &gt;&gt;</a></p>
+					</div>
+				</section>
+			</aside>
+
+			<main>
+				<section class="box" id="home">
+					<h2>✦ Selamat Datang! ✦</h2>
+					<div class="box-content">
+						<p class="welcome"><strong>Hei, kamu berhasil sampai ke homepage-ku!</strong></p>
+						<p>Ini sudut kecil di internet buat cerita, koleksi hal random, dan ngobrol sama teman-teman yang mampir. Silakan keliling, semoga betah!</p>
+						<hr class="pixel-rule">
+						<p><span class="blink">NEW!</span> Ada kabar baru di halaman update. Tinggalkan jejakmu di buku tamu sebelum pulang ya.</p>
+					</div>
+				</section>
+
+				<section class="box" id="tentang">
+					<h2>☺ Sedikit Tentang Aku</h2>
+					<div class="box-content">
+						<p><strong>Nama:</strong> Rafael<br><strong>Owner alias:</strong> Rafael</p>
+						<p>Aku suka musik, gambar-gambar kecil, dan menjelajahi sudut internet yang menarik. Halaman ini masih terus dibangun, jadi mampir lagi kapan-kapan!</p>
+						<p>Salam pixel,<br><strong style="color:var(--yellow)">Rafael</strong></p>
+					</div>
+				</section>
+
+				<section class="box" id="update">
+					<h2>✎ Papan Pengumuman</h2>
+					<div class="box-content">
+						<ul class="updates">
+							<li><strong>29 Sep 2026</strong> — Homepage dibuka! Selamat datang di dunia kecilku.</li>
+							<li><strong>Segera</strong> — Galeri gambar dan daftar lagu favorit.</li>
+							<li><strong>Catatan</strong> — Bawa camilan sendiri, koneksi dial-up lama banget :)</li>
+						</ul>
+					</div>
+				</section>
+
+				<section class="box" id="guestbook">
+					<h2>✉ Buku Tamu</h2>
+					<div class="box-content">
+						<p>Tulis salam singkat sebelum lanjut berselancar!</p>
+						<form class="guestbook-form" id="guestbook-form">
+							<label>Nama
+								<input name="name" maxlength="32" required placeholder="Nama panggilanmu">
+							</label>
+							<label>Pesan
+								<textarea name="message" maxlength="180" required placeholder="Hai! Aku mampir dari..."></textarea>
+							</label>
+							<button class="retro-button" type="submit">Tinggalkan pesan!</button>
+						</form>
+						<p id="guestbook-status" role="status" aria-live="polite"></p>
+						<div id="guestbook-entries" aria-live="polite"></div>
+					</div>
+				</section>
+			</main>
+		</div>
+
+		<footer id="footer">
+			<p>~*~ Terima kasih sudah berkunjung! ~*~</p>
+			<p>© 1998–2026 Homepage Rafael · Dibuat dengan HTML dan banyak cinta</p>
+			<a href="#home">Kembali ke atas ↑</a>
+		</footer>
+	</div>
+
+	<script>
+		const visitorKey = "kamar-internet-visits";
+		const visitCount = Number(localStorage.getItem(visitorKey) || 0) + 1;
+		localStorage.setItem(visitorKey, visitCount);
+		document.querySelector("#visitor-count").textContent = String(visitCount).padStart(6, "0");
+
+		const form = document.querySelector("#guestbook-form");
+		const entriesElement = document.querySelector("#guestbook-entries");
+		const guestbookStatus = document.querySelector("#guestbook-status");
+
+		async function renderEntries() {
+			const response = await fetch("/api/guestbook", { cache: "no-store" });
+			if (!response.ok) throw new Error("Guestbook tidak bisa dimuat.");
+			const entries = await response.json();
+			entriesElement.replaceChildren(...entries.map(({ name, message, timestamp }) => {
+				const entry = document.createElement("p");
+				entry.className = "entry";
+				const author = document.createElement("strong");
+				author.textContent = `${name}: `;
+				const date = document.createElement("small");
+				date.textContent = ` (${new Date(timestamp).toLocaleString()})`;
+				entry.append(author, document.createTextNode(message), date);
+				return entry;
+			}));
+		}
+
+		form.addEventListener("submit", async (event) => {
+			event.preventDefault();
+			const data = new FormData(form);
+			guestbookStatus.textContent = "Mengirim pesan...";
+			try {
+				const response = await fetch("/api/guestbook", {
+					method: "POST",
+					headers: { "Content-Type": "application/json" },
+					body: JSON.stringify({ name: data.get("name").trim(), message: data.get("message").trim() })
+				});
+				if (!response.ok) throw new Error("Pesan gagal disimpan.");
+				form.reset();
+				guestbookStatus.textContent = "Pesan berhasil disimpan!";
+				await renderEntries();
+			} catch {
+				guestbookStatus.textContent = "Backend belum berjalan atau pesan gagal disimpan.";
+			}
+		});
+
+		renderEntries().catch(() => {
+			guestbookStatus.textContent = "Guestbook belum tersedia. Jalankan server.py terlebih dahulu.";
+		});
+	</script>
+</body>
+</html>
